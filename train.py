@@ -16,12 +16,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 @click.command()
 @click.option("--tracking_uri", default="", type=str)
-@click.option("--call", default="", type=str)
-@click.option("--input", default="", type=str)
-def train(tracking_uri, call, input):
+def train(tracking_uri):
     mlflow.set_tracking_uri(tracking_uri)
     # We create the remote experiment (on the server, if it doesn't already exist)
-    experiment = mlflow.set_experiment("test-sklearn")
+    experiment = mlflow.set_experiment("test-sklearn-without-docker")
     # We create a run locally with the same experiment id as the one on the server
     client = mlflow.tracking.MlflowClient()
     run = client.create_run(experiment.experiment_id)
@@ -31,8 +29,7 @@ def train(tracking_uri, call, input):
         # mlflow.log_artifact("Dockerfile")
         # mlflow.log_artifact("MLproject")
         # mlflow.log_artifact("project.py")
-        # print("coucou")
-        # exit()
+
         # Loading dataset
         dia_df = load_diabetes()
         X = dia_df.data

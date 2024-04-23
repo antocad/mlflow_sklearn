@@ -23,9 +23,9 @@ def inference(tracking_uri, run, input):
     # Extracting Hparams and model's checkpoint from MLflow
     run_id = run.split('/')[1]
     run_mlflow = dict(mlflow.get_run(run_id))
-    y_max = float(run['data'].params['y_max'])
-    y_min = float(run['data'].params['y_min'])
-    pipeline = mlflow.pyfunc.load_model(run_mlflow)
+    y_max = float(run_mlflow['data'].params['y_max'])
+    y_min = float(run_mlflow['data'].params['y_min'])
+    pipeline = mlflow.pyfunc.load_model(run)
 
     # Inference
     input = np.fromstring(input, sep=',').reshape(1, -1)
