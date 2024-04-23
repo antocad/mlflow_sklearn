@@ -1,4 +1,4 @@
-name: test-mlflow-docker
+name: test-mlflow
 
 conda_env: conda.yaml
 

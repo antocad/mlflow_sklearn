@@ -1,0 +1,2 @@
+1st Step:
+-> mlflow run https://github.com/antocad/mlflow_sklearn -P run='runs:/09f121adf60f421fa4bc6d4c400c9971/model'
